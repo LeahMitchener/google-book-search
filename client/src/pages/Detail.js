@@ -8,8 +8,7 @@ class Detail extends Component {
   state = {
     book: {}
   };
-  // When this component mounts, grab the book with the _id of this.props.match.params.id
-  // e.g. localhost:3000/books/599dcb67f0f16317844583fc
+
   componentDidMount() {
     API.getBook(this.props.match.params.id)
       .then(res => this.setState({ book: res.data }))
@@ -18,7 +17,7 @@ class Detail extends Component {
 
   render() {
     return (
-      <Container >
+      <Container>
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -32,10 +31,15 @@ class Detail extends Component {
           <Col size="md-10 md-offset-1">
             <article>
               {console.log(this.state.book.previewLink)}
-              <h1>Synopsis</h1> <a href={this.state.book.previewLink} target="_blank" rel="noopener noreferrer">View online</a>
-              <p>
-                {this.state.book.synopsis}
-              </p>
+              <h1>Synopsis</h1>{" "}
+              <a
+                href={this.state.book.previewLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View online
+              </a>
+              <p>{this.state.book.synopsis}</p>
             </article>
           </Col>
         </Row>

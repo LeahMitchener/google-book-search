@@ -39,48 +39,35 @@ class Books extends Component {
     });
   };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
   render() {
     return (
-      <Container >
+      <Container>
         <Row>
-            <Col size="md-12">
+          <Col size="md-12">
             <Jumbotron>
-            <h1>Books On My List</h1>
+              <h1>Books On My List</h1>
             </Jumbotron>
             {this.state.books.length ? (
-            <List>
+              <List>
                 {this.state.books.map(book => (
-                <ListItem key={book._id}>
+                  <ListItem key={book._id}>
                     <Link to={"/books/" + book._id}>
-                    <strong>
+                      <strong>
                         {book.title} by {book.author}
-                    </strong>
+                      </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                </ListItem>
+                  </ListItem>
                 ))}
-            </List>
+              </List>
             ) : (
-            <h3>No Results to Display</h3>
+              <h3>No Results to Display</h3>
             )}
-            </Col>
+          </Col>
         </Row>
-    </Container>
+      </Container>
     );
-}
+  }
 }
 
 export default Books;
